@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>Orbit — Your workspace, simplified</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .navbar {
+      backdrop-filter: blur(15px);
+    }
+
+    .btn {
+      font-weight: 650;
+    }
+
+    .section-title {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .feature-card,
+    .price-card,
+    .menu-card {
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .feature-card:hover,
+    .price-card:hover,
+    .menu-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 45px #0002;
+    }
+
+    .icon-box {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      border-radius: 18px;
+    }
+
+    .back-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 30;
+      display: none;
+    }
+
+    .back-top.visible {
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      section {
+        padding: 65px 0;
+      }
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      color: #15203b;
+    }
+
+    .hero {
+      padding: 110px 0;
+      background: radial-gradient(circle at 70% 35%, #e7edff, transparent 45%);
+    }
+
+    .dashboard {
+      background: white;
+      border: 1px solid #e5e9f5;
+      border-radius: 28px;
+      padding: 30px;
+      transform: rotate(1deg);
+    }
+
+    .mini {
+      padding: 20px;
+      border-radius: 16px;
+    }
+
+    .mini h2 {
+      font-weight: 800;
+      margin: 12px 0;
+    }
+
+    .bars {
+      height: 130px;
+      display: flex;
+      align-items: end;
+      gap: 13px;
+    }
+
+    .bars span {
+      flex: 1;
+      background: linear-gradient(#80a4ff, #245cf4);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .stat {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      height: 100%;
+    }
+
+    .stat h2 {
+      font-weight: 800;
+    }
+
+    .stat p {
+      margin: 0;
+      color: #778;
+    }
+
+    .stat.bg-primary p {
+      color: #e9efff;
+    }
+
+    .featured {
+      border: 2px solid #0d6efd !important;
+      box-shadow: 0 15px 45px #0d6efd20;
+    }
+
+    .newsletter {
+      background: linear-gradient(120deg, #1946bf, #5a73f0);
+    }
+  </style>
+</head>
+<body data-bs-root-margin="0px 0px -40%" tabindex="0">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-2" href="#heroSection"><span class="text-primary">◉</span> orbit.</a>
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#heroSection">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pricing">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#faq">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+        <a class="btn btn-primary rounded-pill ms-lg-3 px-4" href="#pricing">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero bg-white" id="heroSection">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="badge text-bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3">THE SMARTER WAY TO WORK</span>
+            <h1 class="display-3 fw-bold lh-1 mb-4">Make room for <span class="text-primary">big ideas.</span></h1>
+            <p class="lead text-secondary mb-4">Plan projects, connect your team and turn scattered tasks into meaningful progress — all in one beautiful workspace.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a class="btn btn-primary btn-lg rounded-pill px-4" href="#pricing">Start for free <i class="bi bi-arrow-up-right"></i></a>
+              <a class="btn btn-outline-dark btn-lg rounded-pill px-4" href="#features">Explore features</a>
+            </div>
+            <div class="d-flex gap-4 mt-5 text-secondary small">
+              <span><i class="bi bi-check-circle-fill text-success"></i> No credit card</span>
+              <span><i class="bi bi-check-circle-fill text-success"></i> Setup in minutes</span>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="dashboard shadow-lg">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <strong>Team overview</strong>
+                <span class="badge text-bg-success">On track</span>
+              </div>
+              <div class="row g-3">
+                <div class="col-6">
+                  <div class="mini bg-primary-subtle">
+                    <small>Tasks completed</small>
+                    <h2>84%</h2>
+                    <div class="progress">
+                      <div class="progress-bar" style="width:84%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mini bg-warning-subtle">
+                    <small>Active projects</small>
+                    <h2>12</h2>
+                    <span class="text-success small">↗ +3 this month</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <small class="text-secondary">Weekly activity</small>
+                <div class="bars mt-3">
+                  <span style="height:38%"></span>
+                  <span style="height:65%"></span>
+                  <span style="height:48%"></span>
+                  <span style="height:90%"></span>
+                  <span style="height:72%"></span>
+                  <span style="height:100%"></span>
+                  <span style="height:82%"></span>
+                </div>
+              </div>
+              <div class="mt-4 p-3 rounded-3 bg-light">
+                <i class="bi bi-stars text-primary"></i> Next milestone: Website launch <span class="float-end text-primary fw-bold">Friday</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-light" id="about">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <span class="text-primary fw-bold">ABOUT ORBIT</span>
+            <h2 class="display-5 section-title mt-3">Less busywork.<br/>More momentum.</h2>
+            <p class="text-secondary lead">Orbit brings conversations, goals and deadlines together so everyone knows what matters next.</p>
+            <a class="btn btn-outline-primary rounded-pill px-4" href="#features">See how it works</a>
+          </div>
+          <div class="col-lg-7">
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="stat">
+                  <h2>40%</h2>
+                  <p>less time in meetings</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="stat">
+                  <h2>3×</h2>
+                  <p>faster project planning</p>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="stat bg-primary text-white">
+                  <h2>One place for your whole team.</h2>
+                  <p class="mb-0">Organize work without losing your creativity.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-primary fw-bold">FEATURES</span>
+          <h2 class="display-5 section-title">Everything in sync</h2>
+          <p class="text-secondary">Simple tools for ambitious teams.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <article class="feature-card border rounded-4 p-4 h-100">
+              <div class="icon-box bg-primary-subtle text-primary mb-4">
+                <i class="bi bi-kanban"></i>
+              </div>
+              <h4>Visual boards</h4>
+              <p class="text-secondary mb-0">See every task move from idea to done.</p>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="feature-card border rounded-4 p-4 h-100">
+              <div class="icon-box bg-primary-subtle text-primary mb-4">
+                <i class="bi bi-people"></i>
+              </div>
+              <h4>Team collaboration</h4>
+              <p class="text-secondary mb-0">Keep conversations close to your work.</p>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="feature-card border rounded-4 p-4 h-100">
+              <div class="icon-box bg-primary-subtle text-primary mb-4">
+                <i class="bi bi-calendar3"></i>
+              </div>
+              <h4>Smart scheduling</h4>
+              <p class="text-secondary mb-0">Stay ahead of deadlines and milestones.</p>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="feature-card border rounded-4 p-4 h-100">
+              <div class="icon-box bg-primary-subtle text-primary mb-4">
+                <i class="bi bi-graph-up-arrow"></i>
+              </div>
+              <h4>Progress analytics</h4>
+              <p class="text-secondary mb-0">Turn activity into actionable insights.</p>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="feature-card border rounded-4 p-4 h-100">
+              <div class="icon-box bg-primary-subtle text-primary mb-4">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h4>Secure by design</h4>
+              <p class="text-secondary mb-0">Your workspace stays private and protected.</p>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="feature-card border rounded-4 p-4 h-100">
+              <div class="icon-box bg-primary-subtle text-primary mb-4">
+                <i class="bi bi-phone"></i>
+              </div>
+              <h4>Work anywhere</h4>
+              <p class="text-secondary mb-0">A seamless experience across devices.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-light" id="pricing">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-primary fw-bold">PRICING</span>
+          <h2 class="display-5 section-title">Plans that grow with you</h2>
+          <p class="text-secondary">Clear pricing. No surprises.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <article class="price-card bg-white border rounded-4 p-4 h-100">
+              <h4>Starter</h4>
+              <p class="text-secondary">For personal projects</p>
+              <h2 class="display-5 fw-bold">$0<small class="fs-6 fw-normal text-secondary">/mo</small></h2>
+              <hr/>
+              <ul class="list-unstyled">
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>2 projects</li>
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Basic boards</li>
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Community support</li>
+              </ul>
+              <a class="btn btn-outline-primary rounded-pill w-100 mt-3" href="#contact">Choose Starter</a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="price-card bg-white border rounded-4 p-4 h-100 featured">
+              <h4>Pro</h4>
+              <p class="text-secondary">For growing teams</p>
+              <h2 class="display-5 fw-bold">$12<small class="fs-6 fw-normal text-secondary">/mo</small></h2>
+              <hr/>
+              <ul class="list-unstyled">
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Unlimited projects</li>
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Advanced analytics</li>
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Priority support</li>
+              </ul>
+              <a class="btn btn-primary rounded-pill w-100 mt-3" href="#contact">Choose Pro</a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="price-card bg-white border rounded-4 p-4 h-100">
+              <h4>Ultimate</h4>
+              <p class="text-secondary">For ambitious organizations</p>
+              <h2 class="display-5 fw-bold">$29<small class="fs-6 fw-normal text-secondary">/mo</small></h2>
+              <hr/>
+              <ul class="list-unstyled">
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Everything in Pro</li>
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Team permissions</li>
+                <li class="my-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Dedicated onboarding</li>
+              </ul>
+              <a class="btn btn-outline-primary rounded-pill w-100 mt-3" href="#contact">Choose Ultimate</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-5 section-title">Frequently asked questions</h2>
+          <p class="text-secondary">Everything you need to know.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="border-bottom pb-3">
+              <div aria-controls="faq-answer-1" aria-expanded="false" class="btn w-100 text-start d-flex justify-content-between align-items-center fw-semibold fs-5">
+                Can I try Orbit for free?<i class="bi bi-chevron-down"></i>
+              </div>
+              <div class="" id="faq-answer-1">
+                <p class="text-secondary px-2 pt-3">Yes. The Starter plan is free and does not require a credit card.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border-bottom pb-3">
+              <div aria-controls="faq-answer-2" aria-expanded="false" class="btn w-100 text-start d-flex justify-content-between align-items-center fw-semibold fs-5">
+                Can I change plans later?<i class="bi bi-chevron-down"></i>
+              </div>
+              <div class="" id="faq-answer-2">
+                <p class="text-secondary px-2 pt-3">Absolutely. Upgrade or downgrade whenever your needs change.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border-bottom pb-3">
+              <div aria-controls="faq-answer-3" aria-expanded="false" class="btn w-100 text-start d-flex justify-content-between align-items-center fw-semibold fs-5">
+                Which payment methods are accepted?<i class="bi bi-chevron-down"></i>
+              </div>
+              <div class="" id="faq-answer-3">
+                <p class="text-secondary px-2 pt-3">We accept major credit cards and PayPal.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border-bottom pb-3">
+              <div aria-controls="faq-answer-4" aria-expanded="false" class="btn w-100 text-start d-flex justify-content-between align-items-center fw-semibold fs-5">
+                Does Orbit work on mobile?<i class="bi bi-chevron-down"></i>
+              </div>
+              <div class="" id="faq-answer-4">
+                <p class="text-secondary px-2 pt-3">Yes. The interface adapts to phones, tablets and desktops.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border-bottom pb-3">
+              <div aria-controls="faq-answer-5" aria-expanded="false" class="btn w-100 text-start d-flex justify-content-between align-items-center fw-semibold fs-5">
+                Is there a refund policy?<i class="bi bi-chevron-down"></i>
+              </div>
+              <div class="" id="faq-answer-5">
+                <p class="text-secondary px-2 pt-3">Paid plans include a 30-day money-back guarantee.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="border-bottom pb-3">
+              <div aria-controls="faq-answer-6" aria-expanded="false" class="btn w-100 text-start d-flex justify-content-between align-items-center fw-semibold fs-5">
+                How can I get support?<i class="bi bi-chevron-down"></i>
+              </div>
+              <div class="" id="faq-answer-6">
+                <p class="text-secondary px-2 pt-3">Contact our team using the form below.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-light" id="contact">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <span class="text-primary fw-bold">CONTACT</span>
+            <h2 class="display-5 section-title">Let's build something great.</h2>
+            <p class="text-secondary">Have a question? Send us a message and our team will get back to you.</p>
+            <p><i class="bi bi-envelope text-primary me-2"></i> hello@orbit.example</p>
+            <p><i class="bi bi-geo-alt text-primary me-2"></i> Online, worldwide</p>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="#" class="bg-white rounded-4 shadow-sm p-4" id="contactForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="contactName">Name</label>
+                  <input class="form-control" id="contactName" placeholder="Your name" required=""/>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="contactEmail">Email</label>
+                  <input class="form-control" id="contactEmail" placeholder="you@example.com" required="" type="email"/>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="contactMessage">Message</label>
+                  <textarea class="form-control" id="contactMessage" placeholder="Tell us about your idea" required="" rows="5"></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary rounded-pill px-4" type="button">Send message</button>
+                  <div class="form-feedback mt-2" role="status"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter text-center text-white" id="newsletter">
+      <div class="container">
+        <h2 class="display-5 section-title">A little inspiration in your inbox.</h2>
+        <p>Get useful productivity tips and product updates.</p>
+        <form action="#" class="d-flex flex-column flex-sm-row gap-2 mx-auto" id="newsletterForm" style="max-width:520px">
+          <input aria-label="Email address" class="form-control form-control-lg rounded-pill" placeholder="Your email address" required="" type="email"/>
+          <button class="btn btn-light rounded-pill px-4" type="button">Subscribe</button>
+        </form>
+        <div class="mt-3" id="newsletterStatus" role="status"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white py-5">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <strong class="fs-3">◉ orbit.</strong>
+      <span class="text-white-50">© 2026 Orbit. Demo project for Bootstrap 5.</span>
+      <div class="d-flex gap-3">
+        <a class="text-white" href="#about">About</a>
+        <a class="text-white" href="#pricing">Pricing</a>
+        <a class="text-white" href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Back to top" class="btn btn-primary rounded-circle back-top visible" href="#heroSection">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+</body>
+</html>
+```[cite: 8, 9]
